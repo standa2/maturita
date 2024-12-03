@@ -172,8 +172,8 @@ while True:
         pygame.display.update()
         Tutorial.draw_background()
 
-        screen.blit(drop_img, [350, 340])
-        screen.blit(rotate_img, [350, 240])
+        screen.blit(rotate_img, [350, 340])
+        screen.blit(drop_img, [350, 240])
         screen.blit(move_left_img, [350, 440])
         screen.blit(move_right_img, [350, 540])
 
