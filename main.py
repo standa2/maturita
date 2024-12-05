@@ -1,17 +1,20 @@
 # importuju co potrebuji
 import pygame
 import button
-import tkinter
 from sys import exit
 from map import World
+# import tkinter
 
 pygame.init()
 
-screen_width = tkinter.Tk().winfo_screenwidth()
-screen_height = tkinter.Tk().winfo_screenheight()
+game_width = 1280
+game_height = 800
+
+# screen_width = tkinter.Tk().winfo_screenwidth()
+# screen_height = tkinter.Tk().winfo_screenheight()
 
 # obrazovka a hodinky
-screen = pygame.display.set_mode((screen_width,screen_height))
+screen = pygame.display.set_mode((game_width,game_height))
 clock = pygame.time.Clock()
 
 
