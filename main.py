@@ -1,13 +1,17 @@
 # importuju co potrebuji
 import pygame
 import button
+import tkinter
 from sys import exit
 from map import World
 
 pygame.init()
 
+screen_width = tkinter.Tk().winfo_screenwidth()
+screen_height = tkinter.Tk().winfo_screenheight()
+
 # obrazovka a hodinky
-screen = pygame.display.set_mode((1280,800))
+screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
 
 
@@ -20,6 +24,7 @@ Start = World("assets/Start/start.tmx", screen)
 Game = World("assets/PLay/mapa.tmx", screen)
 Tutorial = World("assets/Tutorial/tutorial.tmx", screen)
 Level = World("assets/Choose/choosing.tmx", screen)
+
 
 # Tlacitka
 start_img = pygame.image.load("assets/Start/start.png")
