@@ -12,10 +12,6 @@ class Button ():
     def draw(self, screen):
         action = False
         pos = pygame.mouse.get_pos()
-        elapsed_time = 0
-        time = pygame.time.Clock()
-        elapsed_time += time.get_time()
-        time.tick(60)
 
         if self.rect.collidepoint(pos):
             if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False :
