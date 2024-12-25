@@ -19,8 +19,6 @@ key = pygame.key.get_pressed()
 # tetris
 tetris = Tetris(screen)
 
-
-
 # Fonty
 font = pygame.font.Font(None, 60)
 font2 = pygame.font.Font(None, 40)
@@ -125,7 +123,6 @@ while True:
     for event in pygame.event.get():
         tetris.timer()
 
-
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
@@ -133,20 +130,8 @@ while True:
         elif event.type == pygame.KEYDOWN:
             tetris.control(pressed_key=event.key)
 
-
         elif event.type == tetris.thing:
             trigger = True
-
-
-
-
-
-
-
-        
-
-
-
 
 # Start
     if game_started == True:
@@ -220,10 +205,8 @@ while True:
             game_tutorial = False
             game_playing = True
 
-
 # Hra
     if game_playing == True:
-
 
         pygame.display.update()
         Game.draw_background()
@@ -231,9 +214,6 @@ while True:
         tetris.update(trigger)
         tetris.draw()
         tetris.control(key)
-
-        
-
 
         screen.blit(score_img, [1015, 320])
         screen.blit(top_score_img, [980, 500])
@@ -267,7 +247,6 @@ while True:
         screen.blit(O_score, (200 , 495))
         screen.blit(T_score, (200 , 535))
         screen.blit(I_score, (200 , 575))
-
 
         if pause_button.draw(screen):
             game_pause = True
