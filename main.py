@@ -118,10 +118,9 @@ game_tutorial = False
 
 # Cyklus
 while True:
-    trigger = False
+    # trigger = False
 
     for event in pygame.event.get():
-        tetris.timer()
 
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -129,9 +128,6 @@ while True:
 
         elif event.type == pygame.KEYDOWN:
             tetris.control(pressed_key=event.key)
-
-        elif event.type == tetris.thing:
-            trigger = True
 
 # Start
     if game_started == True:
@@ -211,7 +207,7 @@ while True:
         pygame.display.update()
         Game.draw_background()
 
-        tetris.update(trigger)
+        tetris.update()
         tetris.draw()
         tetris.control(key)
 
