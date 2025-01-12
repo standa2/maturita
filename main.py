@@ -97,17 +97,7 @@ S_img = pygame.image.load("assets/Block_images/S.png")
 T_img = pygame.image.load("assets/Block_images/T.png")
 I_img = pygame.image.load("assets/Block_images/I.png")
 
-# Body
-points = 0
 top_points = 0
-
-L_points = 0
-J_points = 0
-S_points = 0
-Z_points = 0
-O_points = 0
-T_points = 0
-I_points = 0
 
 # Stavy
 game_started = True
@@ -209,8 +199,11 @@ while True:
 
         screen.blit(score_img, [1015, 320])
         screen.blit(top_score_img, [980, 500])
+        
+        if tetris.points > top_points:
+            top_points = tetris.points
 
-        score = font.render(f"{points : 04d}", False, "#FFFFFF")
+        score = font.render(f"{tetris.points : 04d}", False, "#FFFFFF")
         top_score = font.render(f"{top_points : 04d}", False, "#FFFFFF")
 
         screen.blit(score, (1035 , 400))
@@ -224,13 +217,13 @@ while True:
         screen.blit(T_img, [80, 540])
         screen.blit(I_img, [80, 580])
 
-        L_score = font2.render(f"{L_points : 04d}", False, "#FFFFFF")
-        J_score = font2.render(f"{J_points : 04d}", False, "#FFFFFF")
-        Z_score = font2.render(f"{Z_points : 04d}", False, "#FFFFFF")
-        S_score = font2.render(f"{S_points : 04d}", False, "#FFFFFF")
-        O_score = font2.render(f"{O_points : 04d}", False, "#FFFFFF")
-        T_score = font2.render(f"{T_points : 04d}", False, "#FFFFFF")
-        I_score = font2.render(f"{I_points : 04d}", False, "#FFFFFF")
+        L_score = font2.render(f"{tetris.L_points : 04d}", False, "#FFFFFF")
+        J_score = font2.render(f"{tetris.J_points : 04d}", False, "#FFFFFF")
+        Z_score = font2.render(f"{tetris.Z_points : 04d}", False, "#FFFFFF")
+        S_score = font2.render(f"{tetris.S_points : 04d}", False, "#FFFFFF")
+        O_score = font2.render(f"{tetris.O_points : 04d}", False, "#FFFFFF")
+        T_score = font2.render(f"{tetris.T_points : 04d}", False, "#FFFFFF")
+        I_score = font2.render(f"{tetris.I_points : 04d}", False, "#FFFFFF")
 
         screen.blit(L_score, (200 , 335))
         screen.blit(J_score, (200 , 375))
