@@ -61,19 +61,7 @@ class Tetris:
         self.lines_destroyed = 0
 
         self.level = 1
-
-        self.lvl0 = 'assets/Blocks/lvl_0/'
-        self.lvl1 = 'assets/Blocks/lvl_1/'
-        self.lvl2 = 'assets/Blocks/lvl_2/'
-        self.lvl3 = 'assets/Blocks/lvl_3/'
-        self.lvl4 = 'assets/Blocks/lvl_4/'
-        self.lvl5 = 'assets/Blocks/lvl_5/'
-        self.lvl6 = 'assets/Blocks/lvl_6/'
-        self.lvl7 = 'assets/Blocks/lvl_7/'
-        self.lvl8 = 'assets/Blocks/lvl_8/'
-        self.lvl9 = 'assets/Blocks/lvl_9/'
-
-        self.lvl = self.lvl0
+        self.lvl = 'assets/Blocks/lvl_0/'
 
         self.pictures = self.images()
         self.sprite = pygame.sprite.Group()
@@ -90,43 +78,33 @@ class Tetris:
         if self.lines_destroyed < 10:
             self.level = 1
             self.normal = 1000
-            self.lvl = self.lvl0
         if self.lines_destroyed > 10:
             self.level = 2
             self.normal = 900
-            self.lvl = self.lvl1
         if self.lines_destroyed > 20:
             self.level = 3
             self.normal = 800
-            self.lvl = self.lvl2
         if self.lines_destroyed > 30:
             self.level = 4
             self.normal = 700
-            self.lvl = self.lvl3
         if self.lines_destroyed > 40:
             self.level = 5
             self.normal = 600
-            self.lvl = self.lvl4
         if self.lines_destroyed > 50:
             self.level = 6
             self.normal = 500
-            self.lvl = self.lvl5
         if self.lines_destroyed > 60:
             self.level = 7
             self.normal = 400
-            self.lvl = self.lvl6
         if self.lines_destroyed > 70:
             self.level = 8
             self.normal = 350
-            self.lvl = self.lvl7
         if self.lines_destroyed > 80:
             self.level = 9
             self.normal = 300
-            self.lvl = self.lvl8
         if self.lines_destroyed > 90:
             self.level = 10
             self.normal = 250
-            self.lvl = self.lvl9
 
 
     def images(self):
