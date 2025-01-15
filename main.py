@@ -130,25 +130,25 @@ while True:
         Level.draw_background()
 
         if level_0.draw(screen):
-            pass
+            tetris.lines_destroyed = 0
         if level_1.draw(screen):
-            pass
+            tetris.lines_destroyed = 5
         if level_2.draw(screen):
-            pass
+            tetris.lines_destroyed = 10
         if level_3.draw(screen):
-            pass
+            tetris.lines_destroyed = 15
         if level_4.draw(screen):
-            pass
+            tetris.lines_destroyed = 20
         if level_5.draw(screen):
-            pass
+            tetris.lines_destroyed = 25
         if level_6.draw(screen):
-            pass
+            tetris.lines_destroyed = 30
         if level_7.draw(screen):
-            pass
+            tetris.lines_destroyed = 35
         if level_8.draw(screen):
-            pass
+            tetris.lines_destroyed = 40
         if level_9.draw(screen):
-            pass
+            tetris.lines_destroyed = 45
 
         if aply_button.draw(screen):
             game_choose = False
