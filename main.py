@@ -7,13 +7,11 @@ from tetris import Tetris
 
 pygame.init()
 
-# obrazovka a hodinky
+# obrazovka, hodinky, keys
 screen_w = 1280
 screen_h = 800
-
 screen = pygame.display.set_mode((screen_w,screen_h))
 clock = pygame.time.Clock()
-
 key = pygame.key.get_pressed()
 
 # tetris
@@ -29,27 +27,23 @@ Game = World("assets/PLay/mapa.tmx", screen)
 Tutorial = World("assets/Tutorial/tutorial.tmx", screen)
 Level = World("assets/Choose/choosing.tmx", screen)
 
-
 # Tlacitka
 start_img = pygame.image.load("assets/Start/start.png")
 play_img = pygame.image.load("assets/Tutorial/play.png")
 pause_img = pygame.image.load("assets/PLay/pause.png")
-aply_img = pygame.image.load("assets/Choose/aply.png")
 
 start_button = button.Button(450, 620, start_img, 10)
 play_button = button.Button(870, 650, play_img, 8)
 pause_button = button.Button(70, 185, pause_img, 6)
-aply_button = button.Button(150, 620, aply_img, 8)
 
 # Menu
-menu_img = pygame.image.load("assets/PLay/Menu/menu.png")
+menu_img = pygame.image.load("assets/Play/Menu/menu.png")
 resume_img = pygame.image.load("assets/Play/Menu/resume.png")
 quit_img = pygame.image.load("assets/Play/Menu/quit.png")
-new_game_img = pygame.image.load("assets/Play/Menu/new_game.png")
+safety = pygame.image.load("assets/Play/safety.png")
 
-resume_button = button.Button(490, 400, resume_img, 8)
-quit_button = button.Button(490, 550, quit_img, 8)
-new_game_button = button.Button(470, 250, new_game_img, 8)
+resume_button = button.Button(490, 300, resume_img, 8)
+quit_button = button.Button(490, 500, quit_img, 8)
 
 # Texty
 drop_img = pygame.image.load("assets/Tutorial/Texts/drop.png")
@@ -97,6 +91,7 @@ S_img = pygame.image.load("assets/Block_images/S.png")
 T_img = pygame.image.load("assets/Block_images/T.png")
 I_img = pygame.image.load("assets/Block_images/I.png")
 
+# Skore
 top_points = 0
 
 # Stavy
@@ -131,28 +126,46 @@ while True:
 
         if level_0.draw(screen):
             tetris.lines_destroyed = 0
-        if level_1.draw(screen):
-            tetris.lines_destroyed = 5
-        if level_2.draw(screen):
-            tetris.lines_destroyed = 10
-        if level_3.draw(screen):
-            tetris.lines_destroyed = 15
-        if level_4.draw(screen):
-            tetris.lines_destroyed = 20
-        if level_5.draw(screen):
-            tetris.lines_destroyed = 25
-        if level_6.draw(screen):
-            tetris.lines_destroyed = 30
-        if level_7.draw(screen):
-            tetris.lines_destroyed = 35
-        if level_8.draw(screen):
-            tetris.lines_destroyed = 40
-        if level_9.draw(screen):
-            tetris.lines_destroyed = 45
-
-        if aply_button.draw(screen):
             game_choose = False
             game_tutorial = True
+        if level_1.draw(screen):
+            tetris.lines_destroyed = 5
+            game_choose = False
+            game_tutorial = True
+        if level_2.draw(screen):
+            tetris.lines_destroyed = 10
+            game_choose = False
+            game_tutorial = True
+        if level_3.draw(screen):
+            tetris.lines_destroyed = 15
+            game_choose = False
+            game_tutorial = True
+        if level_4.draw(screen):
+            tetris.lines_destroyed = 20
+            game_choose = False
+            game_tutorial = True
+        if level_5.draw(screen):
+            tetris.lines_destroyed = 25
+            game_choose = False
+            game_tutorial = True
+        if level_6.draw(screen):
+            tetris.lines_destroyed = 30
+            game_choose = False
+            game_tutorial = True
+        if level_7.draw(screen):
+            tetris.lines_destroyed = 35
+            game_choose = False
+            game_tutorial = True
+        if level_8.draw(screen):
+            tetris.lines_destroyed = 40
+            game_choose = False
+            game_tutorial = True
+        if level_9.draw(screen):
+            tetris.lines_destroyed = 45
+            game_choose = False
+            game_tutorial = True
+
+
 
 # Menu
     if game_pause == True:
@@ -164,9 +177,6 @@ while True:
             game_playing = True
         if quit_button.draw(screen):
             pygame.quit()
-        if new_game_button.draw(screen):
-            game_pause = False
-            game_choose = True
 
 # Tutorial 
     if game_tutorial == True:
@@ -199,6 +209,7 @@ while True:
 
         screen.blit(score_img, [1015, 320])
         screen.blit(top_score_img, [980, 500])
+        screen.blit(safety,[464,1])
         
         if tetris.points > top_points:
             top_points = tetris.points
