@@ -6,6 +6,7 @@ from map import World
 from tetris import Tetris
 
 pygame.init()
+pygame.mixer.init()
 
 # obrazovka, hodinky, keys
 screen_w = 1280
@@ -13,6 +14,8 @@ screen_h = 800
 screen = pygame.display.set_mode((screen_w,screen_h))
 clock = pygame.time.Clock()
 key = pygame.key.get_pressed()
+pygame.mixer.music.load("assets/Music/musik.mp3")
+pygame.mixer.music.play(-1)
 
 # tetris
 tetris = Tetris(screen)

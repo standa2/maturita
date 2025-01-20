@@ -59,6 +59,8 @@ class Tetris:
         self.full_lines = 0
         self.points_per_line = {0: 0, 1: 100, 2: 300, 3: 500, 4: 800}
 
+        self.lvl = "assets/Blocks/lvl_0"
+
         self.pictures = self.images()
         self.sprite = pygame.sprite.Group()
         self.field = self.array()
@@ -93,50 +95,39 @@ class Tetris:
             self.level = 10
 
         if self.level == 1:
-            self.normal = 500
+            self.normal = 600
+            self.lvl = "assets/Blocks/lvl_0"
         if self.level == 2:
-            self.normal = 450
+            self.normal = 500
+            self.lvl = "assets/Blocks/lvl_1"
         if self.level == 3:
-            self.normal = 400
+            self.lvl = "assets/Blocks/lvl_2"
+            self.normal = 450
         if self.level == 4:
-            self.normal = 350
+            self.lvl = "assets/Blocks/lvl_3"
+            self.normal = 400
         if self.level == 5:
-            self.normal = 300
+            self.lvl = "assets/Blocks/lvl_4"
+            self.normal = 350
         if self.level == 6:
-            self.normal = 250
+            self.lvl = "assets/Blocks/lvl_5"
+            self.normal = 300
         if self.level == 7:
-            self.normal = 200
+            self.lvl = "assets/Blocks/lvl_6"
+            self.normal = 250
         if self.level == 8:
-            self.normal = 150
+            self.lvl = "assets/Blocks/lvl_7"
+            self.normal = 200
         if self.level == 9:
-            self.normal = 100
+            self.lvl = "assets/Blocks/lvl_8"
+            self.normal = 150
         if self.level == 10:
-            self.normal = 50
-            
+            self.lvl = "assets/Blocks/lvl_9"
+            self.normal = 100
+
 
     def images(self):
-        if self.level == 1:
-            lvl = 'assets/Blocks/lvl_0/'
-        if self.level == 2:
-            lvl = 'assets/Blocks/lvl_1/'
-        if self.level == 3:
-            lvl = 'assets/Blocks/lvl_2/'
-        if self.level == 4:
-            lvl = 'assets/Blocks/lvl_3/'
-        if self.level == 5:
-            lvl = 'assets/Blocks/lvl_4/'
-        if self.level == 6:
-            lvl = 'assets/Blocks/lvl_5/'
-        if self.level == 7:
-            lvl = 'assets/Blocks/lvl_6/'
-        if self.level == 8:
-            lvl = 'assets/Blocks/lvl_7/'
-        if self.level == 9:
-            lvl = 'assets/Blocks/lvl_8/'
-        if self.level == 10:
-            lvl = 'assets/Blocks/lvl_9/'
-
-        files = [item for item in pathlib.Path(lvl).rglob('*.png') if item.is_file()]
+        files = [item for item in pathlib.Path(self.lvl).rglob('*.png') if item.is_file()]
         img = [pygame.image.load(file).convert_alpha() for file in files]
         img = [pygame.transform.scale(image, (cell_size, cell_size)) for image in img]
         return img
@@ -183,14 +174,15 @@ class Tetris:
                 self.speed = self.normal
 
     def control(self, key):
+        down = pygame.key.get_pressed()
         if key == pygame.K_LEFT:
             self.tetromino.move(dir='l')
         if key == pygame.K_RIGHT:
             self.tetromino.move(dir='r')
         if key == pygame.K_UP:
             self.tetromino.rotate()
-        if key == pygame.K_DOWN:
-            self.speed = self.kachow
+        if down[pygame.K_DOWN]:
+            self.tetromino.move(dir='d')
 
     def grid(self):
         for x in range(self.start_x, self.stop_x, cell_size):
@@ -255,6 +247,7 @@ class Tetromino:
     def __init__(self, tetris, current=True):
         self.tetris = tetris
         self.shape = random.choice(list(tetrominos.keys()))
+        self.img = None
 
         if self.shape == 'L':
             self.img = self.tetris.pictures[2]
