@@ -1,5 +1,5 @@
 import pygame, random, pathlib
-
+from utility import get_image
 viktoor = pygame.math.Vector2
 
 cell_size = 32
@@ -59,9 +59,6 @@ class Tetris:
         self.full_lines = 0
         self.points_per_line = {0: 0, 1: 100, 2: 300, 3: 500, 4: 800}
 
-        self.lvl = "assets/Blocks/lvl_0"
-
-        self.pictures = self.images()
         self.sprite = pygame.sprite.Group()
         self.field = self.array()
         self.tetromino = Tetromino(self)
@@ -96,41 +93,24 @@ class Tetris:
 
         if self.level == 1:
             self.normal = 600
-            self.lvl = "assets/Blocks/lvl_0"
         if self.level == 2:
             self.normal = 500
-            self.lvl = "assets/Blocks/lvl_1"
         if self.level == 3:
-            self.lvl = "assets/Blocks/lvl_2"
             self.normal = 450
         if self.level == 4:
-            self.lvl = "assets/Blocks/lvl_3"
             self.normal = 400
         if self.level == 5:
-            self.lvl = "assets/Blocks/lvl_4"
             self.normal = 350
         if self.level == 6:
-            self.lvl = "assets/Blocks/lvl_5"
             self.normal = 300
         if self.level == 7:
-            self.lvl = "assets/Blocks/lvl_6"
             self.normal = 250
         if self.level == 8:
-            self.lvl = "assets/Blocks/lvl_7"
             self.normal = 200
         if self.level == 9:
-            self.lvl = "assets/Blocks/lvl_8"
             self.normal = 150
         if self.level == 10:
-            self.lvl = "assets/Blocks/lvl_9"
             self.normal = 100
-
-
-    def images(self):
-        files = [item for item in pathlib.Path(self.lvl).rglob('*.png') if item.is_file()]
-        img = [pygame.image.load(file).convert_alpha() for file in files]
-        img = [pygame.transform.scale(image, (cell_size, cell_size)) for image in img]
-        return img
         
     def lines(self):
         row = height - 1
@@ -214,7 +194,159 @@ class Cell(pygame.sprite.Sprite):
         self.next_pos = viktoor(pos) + next_pos_ofset
         self.live = True
         super().__init__(tetromino.tetris.sprite)
-        self.image = tetromino.img
+
+        if self.tetromino.tetris.level == 1:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_0/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_0/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_0/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_0/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_0/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_0/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_0/2.png").convert_alpha()
+        elif self.tetromino.tetris.level == 2:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_1/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_1/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_1/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_1/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_1/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_1/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_1/2.png").convert_alpha()
+        elif self.tetromino.tetris.level == 3:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_2/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_2/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_2/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_2/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_2/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_2/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_2/2.png").convert_alpha()
+        elif self.tetromino.tetris.level == 4:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_3/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_3/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_3/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_3/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_3/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_3/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_3/2.png").convert_alpha()
+        elif self.tetromino.tetris.level == 5:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_4/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_4/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_4/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_4/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_4/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_4/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_4/2.png").convert_alpha()
+        elif self.tetromino.tetris.level == 6:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_5/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_5/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_5/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_5/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_5/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_5/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_5/2.png").convert_alpha()
+        elif self.tetromino.tetris.level == 7:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_6/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_6/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_6/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_6/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_6/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_6/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_6/2.png").convert_alpha()
+        elif self.tetromino.tetris.level == 8:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_7/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_7/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_7/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_7/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_7/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_7/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_7/2.png").convert_alpha()
+        elif self.tetromino.tetris.level == 9:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_8/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_8/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_8/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_8/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_8/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_8/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_8/2.png").convert_alpha()
+        elif self.tetromino.tetris.level == 10:
+            if self.tetromino.shape == 'L':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_9/3.png").convert_alpha()
+            elif self.tetromino.shape == 'Z':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_9/3.png").convert_alpha()
+            elif self.tetromino.shape == 'S':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_9/1.png").convert_alpha()
+            elif self.tetromino.shape == 'J':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_9/1.png").convert_alpha()
+            elif self.tetromino.shape == 'T':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_9/2.png").convert_alpha()
+            elif self.tetromino.shape == 'I':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_9/2.png").convert_alpha()
+            elif self.tetromino.shape == 'O':
+                self.spritesheet = pygame.image.load("assets/Blocks/lvl_9/2.png").convert_alpha()
+
+        self.image = get_image(self.spritesheet, 0, 0, 48, 48, 0.7)
         self.rect = self.image.get_rect()
 
     def is_alive(self):
@@ -247,25 +379,6 @@ class Tetromino:
     def __init__(self, tetris, current=True):
         self.tetris = tetris
         self.shape = random.choice(list(tetrominos.keys()))
-        self.img = None
-
-        if self.shape == 'L':
-            self.img = self.tetris.pictures[2]
-        elif self.shape == 'Z':
-            self.img = self.tetris.pictures[2]
-        elif self.shape == 'S':
-            self.img = self.tetris.pictures[0]
-        elif self.shape == 'J':
-            self.img = self.tetris.pictures[0]
-        elif self.shape == 'T':
-            self.img = self.tetris.pictures[1]
-        elif self.shape == 'I':
-            self.img = self.tetris.pictures[1]
-        elif self.shape == 'O':
-            self.img = self.tetris.pictures[1]
-        else:
-            self.img = None
-
         self.cells = [Cell(self, pos) for pos in tetrominos[self.shape]]
         self.landed = False
         self.current = current
