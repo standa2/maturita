@@ -70,25 +70,25 @@ class Tetris:
         self.points += self.points_per_line[self.full_lines] * self.level
         self.full_lines = 0
 
-        if self.lines_destroyed < 5:
+        if self.lines_destroyed < 10:
             self.level = 1
-        if self.lines_destroyed >= 5 and self.lines_destroyed < 10:
+        if self.lines_destroyed >= 10 and self.lines_destroyed < 20:
             self.level = 2
-        if self.lines_destroyed >= 10 and self.lines_destroyed < 15:
+        if self.lines_destroyed >= 20 and self.lines_destroyed < 30:
             self.level = 3
-        if self.lines_destroyed >= 15 and self.lines_destroyed < 20:
+        if self.lines_destroyed >= 30 and self.lines_destroyed < 40:
             self.level = 4
-        if self.lines_destroyed >= 20 and self.lines_destroyed < 25:
+        if self.lines_destroyed >= 40 and self.lines_destroyed < 50:
             self.level = 5
-        if self.lines_destroyed >= 25 and self.lines_destroyed < 30:
+        if self.lines_destroyed >= 50 and self.lines_destroyed < 60:
             self.level = 6
-        if self.lines_destroyed >= 30 and self.lines_destroyed < 35:
+        if self.lines_destroyed >= 60 and self.lines_destroyed < 70:
             self.level = 7
-        if self.lines_destroyed >= 35 and self.lines_destroyed < 40:
+        if self.lines_destroyed >= 70 and self.lines_destroyed < 80:
             self.level = 8
-        if self.lines_destroyed >= 40 and self.lines_destroyed < 45:
+        if self.lines_destroyed >= 80 and self.lines_destroyed < 90:
             self.level = 9
-        if self.lines_destroyed >= 45:
+        if self.lines_destroyed >= 90:
             self.level = 10
 
         if self.level == 1:
@@ -383,22 +383,21 @@ class Tetromino:
         self.landed = False
         self.current = current
 
-        if not self.current:
-            pass
-        elif self.shape == 'L' :
-            self.tetris.L_points += 1
-        elif self.shape == 'J' :
-            self.tetris.J_points += 1
-        elif self.shape == 'S' :
-            self.tetris.S_points += 1
-        elif self.shape == 'Z' :
-            self.tetris.Z_points += 1
-        elif self.shape == 'O' :
-            self.tetris.O_points += 1
-        elif self.shape == 'T' :
-            self.tetris.T_points += 1
-        elif self.shape == 'I' :
-            self.tetris.I_points += 1
+        if not self.current :
+            if self.shape == 'L' :
+                tetris.L_points += 1
+            if self.shape == 'J' :
+                tetris.J_points += 1
+            if self.shape == 'S' :
+                tetris.S_points += 1
+            if self.shape == 'Z' :
+                tetris.Z_points += 1
+            if self.shape == 'O' :
+                tetris.O_points += 1
+            if self.shape == 'T' :
+                tetris.T_points += 1
+            if self.shape == 'I' :
+                tetris.I_points += 1
 
     def rotate(self):
         pivot = self.cells[0].pos

@@ -132,39 +132,39 @@ while True:
             game_choose = False
             game_tutorial = True
         if level_1.draw(screen):
-            tetris.lines_destroyed = 5
-            game_choose = False
-            game_tutorial = True
-        if level_2.draw(screen):
             tetris.lines_destroyed = 10
             game_choose = False
             game_tutorial = True
-        if level_3.draw(screen):
-            tetris.lines_destroyed = 15
-            game_choose = False
-            game_tutorial = True
-        if level_4.draw(screen):
+        if level_2.draw(screen):
             tetris.lines_destroyed = 20
             game_choose = False
             game_tutorial = True
-        if level_5.draw(screen):
-            tetris.lines_destroyed = 25
-            game_choose = False
-            game_tutorial = True
-        if level_6.draw(screen):
+        if level_3.draw(screen):
             tetris.lines_destroyed = 30
             game_choose = False
             game_tutorial = True
-        if level_7.draw(screen):
-            tetris.lines_destroyed = 35
-            game_choose = False
-            game_tutorial = True
-        if level_8.draw(screen):
+        if level_4.draw(screen):
             tetris.lines_destroyed = 40
             game_choose = False
             game_tutorial = True
+        if level_5.draw(screen):
+            tetris.lines_destroyed = 50
+            game_choose = False
+            game_tutorial = True
+        if level_6.draw(screen):
+            tetris.lines_destroyed = 60
+            game_choose = False
+            game_tutorial = True
+        if level_7.draw(screen):
+            tetris.lines_destroyed = 70
+            game_choose = False
+            game_tutorial = True
+        if level_8.draw(screen):
+            tetris.lines_destroyed = 80
+            game_choose = False
+            game_tutorial = True
         if level_9.draw(screen):
-            tetris.lines_destroyed = 45
+            tetris.lines_destroyed = 90
             game_choose = False
             game_tutorial = True
 
