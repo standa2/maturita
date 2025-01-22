@@ -1,5 +1,5 @@
 import pygame, random, pathlib
-from utility import get_image
+from get_images import get_image
 viktoor = pygame.math.Vector2
 
 cell_size = 32
